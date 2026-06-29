@@ -198,6 +198,7 @@
           "slug": "light-clay",
           "display": "Light Clay"
         },
+        "shiny": true,
         "ability": "Prankster",
         "moves": [
           "Foul Play",
@@ -214,6 +215,7 @@
           "slug": "metagrossite",
           "display": "Metagrossite"
         },
+        "shiny": true,
         "ability": "Tough Claws",
         "moves": [
           "Iron Head",
