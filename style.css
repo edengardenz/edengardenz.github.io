@@ -45,6 +45,13 @@ body {
   margin: 0 0 12px 4px;
 }
 
+.team-code {
+  font-family: "DM Serif Display";
+  font-size: 22px;
+  color: var(--accent);
+  margin: 0 0 12px 4px;
+}
+
 .card {
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(232,191,185,0.2);

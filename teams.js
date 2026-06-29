@@ -224,10 +224,16 @@ async function renderAllTeams() {
     section.className = "team-section";
 
     // Team name heading
-    const heading = document.createElement("h2");
-    heading.className = "team-name";
-    heading.textContent = team.name;
+    const nameHeading = document.createElement("h3");
+    nameHeadingeading.className = "team-name";
+    nameHeadingheading.textContent = team.name;
     section.appendChild(heading);
+
+    // Rental code heading
+    const codeHeading = document.createElement("h3");
+    codeHeading.className = "team-code";
+    codeHeading.textContent = team.code;
+    section.appendChild(codeHeading);
 
     // Cards row
     const teamCard = await renderTeam(team.members);
