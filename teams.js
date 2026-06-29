@@ -219,8 +219,21 @@ async function renderAllTeams() {
   container.innerHTML = "";
 
   for (const team of teams) {
+    // Team wrapper
+    const section = document.createElement("div");
+    section.className = "team-section";
+
+    // Team name heading
+    const heading = document.createElement("h2");
+    heading.className = "team-name";
+    heading.textContent = team.name;
+    section.appendChild(heading);
+
+    // Cards row
     const teamCard = await renderTeam(team.members);
-    container.appendChild(teamCard);
+    section.appendChild(teamCard);
+
+    container.appendChild(section);
   }
 }
 
