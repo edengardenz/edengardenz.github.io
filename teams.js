@@ -36,18 +36,8 @@ function getPokemonSprite(id, { shiny = false } = {}) {
 // ITEM ICON RESOLVER
 // =========================
 
-function localItemIcon(slug) {
+function getItemIcon(slug) {
   return `assets/items/${slug}.png`;
-}
-
-async function getItemIcon(slug) {
-  const data = await fetchJSON(POKEAPI_ITEM + slug);
-
-  if (data && data.sprites && data.sprites.default) {
-    return data.sprites.default;
-  }
-
-  return localItemIcon(slug);
 }
 
 // =========================
@@ -71,79 +61,96 @@ function roleClass(role) {
 // =========================
 
 async function renderTeam(team) {
-  const card = document.createElement("div");
-  card.className = "card";
+  const container = document.getElementById("team-container");
+  container.innerHTML = "";
 
-  // Title
-  const title = document.createElement("h2");
-  title.textContent = team.name;
-  card.appendChild(title);
-
-  // Grid
-  const grid = document.createElement("div");
-  grid.className = "team-grid";
-
-  for (const mon of team.members) {
-    const poke = await getPokemonData(mon.name);
-
-    if (!poke) continue;
-
+  for (const mon of team) {
     const wrapper = document.createElement("div");
-    wrapper.className = "mon-card";
+    wrapper.className = "mon-card role-" + mon.role;
 
     // =========================
-    // Pokémon Sprite
+    // SPRITE (POKÉMON - POKEAPI)
     // =========================
     const img = document.createElement("img");
-    img.src = getPokemonSprite(poke.id, {
-      shiny: mon.shiny,
-    });
+    img.className = "pokemon-sprite";
 
-    img.alt = mon.name;
+    const base =
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon";
+
+    img.src = mon.shiny
+      ? `${base}/shiny/${mon.name}.png`
+      : `${base}/${mon.name}.png`;
+
+    wrapper.appendChild(img);
 
     // =========================
-    // Name
+    // NAME (HUMAN READABLE)
     // =========================
     const name = document.createElement("div");
-    name.textContent = mon.name;
-
-    // =========================
-    // Role
-    // =========================
-    const role = document.createElement("div");
-    role.className = roleClass(mon.role);
-    role.textContent = mon.role || "unknown";
-
-    // =========================
-    // Item Icon
-    // =========================
-    const itemWrap = document.createElement("div");
-    itemWrap.className = "item-wrap";
-
-    const itemImg = document.createElement("img");
-    itemImg.className = "item-icon";
-    itemImg.src = await getItemIcon(mon.item);
-
-    const itemText = document.createElement("div");
-    itemText.textContent = mon.item;
-
-    itemWrap.appendChild(itemImg);
-    itemWrap.appendChild(itemText);
-
-    // =========================
-    // Assemble mon card
-    // =========================
-    wrapper.appendChild(img);
+    name.className = "pokemon-name";
+    name.textContent = mon.displayName || mon.name;
     wrapper.appendChild(name);
-    wrapper.appendChild(role);
-    wrapper.appendChild(itemWrap);
 
-    grid.appendChild(wrapper);
+    // =========================
+    // ITEM (LOCAL ASSET)
+    // =========================
+    if (mon.item) {
+      const itemWrap = document.createElement("div");
+      itemWrap.className = "item";
+
+      const itemImg = document.createElement("img");
+      itemImg.className = "item-icon";
+      itemImg.src = `assets/items/${mon.item.slug}.png`;
+
+      const itemText = document.createElement("div");
+      itemText.className = "item-name";
+      itemText.textContent = mon.item.display || mon.item.slug;
+
+      itemWrap.appendChild(itemImg);
+      itemWrap.appendChild(itemText);
+
+      wrapper.appendChild(itemWrap);
+    }
+
+    // =========================
+    // ABILITY
+    // =========================
+    if (mon.ability) {
+      const ability = document.createElement("div");
+      ability.className = "ability";
+      ability.textContent = `Ability: ${mon.ability}`;
+      wrapper.appendChild(ability);
+    }
+
+    // =========================
+    // NATURE
+    // =========================
+    if (mon.nature) {
+      const nature = document.createElement("div");
+      nature.className = "nature";
+      nature.textContent = `Nature: ${mon.nature}`;
+      wrapper.appendChild(nature);
+    }
+
+    // =========================
+    // MOVES
+    // =========================
+    if (mon.moves?.length) {
+      const moves = document.createElement("div");
+      moves.className = "moves";
+
+      for (const move of mon.moves) {
+        const m = document.createElement("div");
+        m.className = "move";
+        m.textContent = move;
+        moves.appendChild(m);
+      }
+
+      wrapper.appendChild(moves);
+    }
+
+    container.appendChild(wrapper);
   }
-
-  card.appendChild(grid);
-
-  return card;
 }
 
 // =========================

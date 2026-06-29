@@ -4,39 +4,108 @@
     "members": [
       {
         "name": "raichu-mega-y",
+        "displayName": "Mega Raichu Y",
         "role": "wincon",
-        "item": "raichunite-y",
-        "shiny": true
+        "item": {
+          "slug": "raichunite-y",
+          "display": "Raichunite Y"
+        },
+        "shiny": true,
+        "ability": "No Guard",
+        "nature": "Timid",
+        "moves": [
+          "Zap Cannon",
+          "Focus Blast",
+          "Fake Out",
+          "Protect"
+        ]
       },
       {
         "name": "mawile-mega",
+        "displayName": "Mega Mawile",
         "role": "wincon",
-        "item": "mawilite",
-        "shiny": true
+        "item": {
+          "slug": "mawilite",
+          "display": "Mawilite"
+        },
+        "shiny": true,
+        "ability": "Huge Power",
+        "nature": "Adamant",
+        "moves": [
+          "Play Rough",
+          "Sucker Punch",
+          "Swords Dance",
+          "Protect"
+        ]
       },
       {
         "name": "sinistcha",
+        "displayName": "Sinistcha",
         "role": "support",
-        "item": "coba-berry",
-        "shiny": false
+        "item": {
+          "slug": "coba-berry",
+          "display": "Coba Berry"
+        },
+        "shiny": false,
+        "ability": "Hospitality",
+        "nature": "Bold",
+        "moves": [
+          "Matcha Gotcha",
+          "Life Dew",
+          "Rage Powder",
+          "Protect"
+        ]
       },
       {
         "name": "ceruledge",
+        "displayName": "Ceruledge",
         "role": "setup",
-        "item": "colbur-berry",
-        "shiny": false
+        "item": {
+          "slug": "colbur-berry",
+          "display": "Colbur Berry"
+        },
+        "shiny": false,
+        "ability": "Flash Fire",
+        "nature": "Adamant",
+        "moves": [
+          "Bitter Blade",
+          "Shadow Sneak",
+          "Bulk Up",
+          "Protect"
+        ]
       },
       {
         "name": "milotic",
+        "displayName": "Milotic",
         "role": "utility",
         "item": "leftovers",
-        "shiny": true
+        "shiny": true,
+        "ability": "Competitive",
+        "nature": "Calm",
+        "moves": [
+          "Muddy Water",
+          "Coil",
+          "Hypnosis",
+          "Protect"
+        ]
       },
       {
         "name": "incineroar",
+        "displayName": "Incineroar",
         "role": "pivot",
-        "item": "sitrus-berry",
-        "shiny": true
+        "item": {
+          "slug": "sitrus-berry",
+          "display": "Sitrus Berry"
+        },
+        "shiny": true,
+        "ability": "Intimidate",
+        "nature": "Impish",
+        "moves": [
+          "Flare Blitz",
+          "Throat Chop",
+          "Fake Out",
+          "Parting Shot"
+        ]
       }
     ]
   }
