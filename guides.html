@@ -5,21 +5,202 @@
   <link href="https://fonts.googleapis.com/css2?family=Bonheur+Royale&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="assets/icons/archaludon.png" type="image/png">
+  <style>
+    .guide-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .guide-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(232, 191, 185, 0.2);
+      border-radius: 12px;
+      padding: 16px 32px;
+      width: 60%;
+      text-align: center;
+      cursor: pointer;
+      color: var(--accent);
+      font-family: "DM Serif Display", serif;
+      font-size: 22px;
+      transition: background 0.2s;
+    }
+
+    .guide-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* MODAL OVERLAY */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal {
+      background: #1a1a3a;
+      border: 1px solid rgba(232, 191, 185, 0.25);
+      border-radius: 16px;
+      padding: 32px;
+      width: 75%;
+      max-width: 800px;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .modal-title {
+      font-family: "DM Serif Display", serif;
+      font-size: 28px;
+      color: var(--accent);
+      margin: 0 0 8px 0;
+    }
+
+    .modal-code {
+      font-family: "DM Serif Display", serif;
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 0 20px 0;
+    }
+
+    .modal p {
+      text-align: left;
+      margin: 0 0 12px 0;
+      width: 100%;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 24px;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .modal-close:hover {
+      color: var(--accent);
+    }
+
+    .modal-section-header {
+      font-family: "DM Serif Display", serif;
+      font-size: 18px;
+      color: var(--accent);
+      margin: 20px 0 6px 0;
+    }
+  </style>
 </head>
 <body>
 
-<h1 class="logo">team guides</h1>
+<h1 class="logo">Guides</h1>
 
 <h2 class="links">
-  <a href="index.html">Index</a> |
   <a href="teams.html">Teams</a> |
-  <a href="about.html">About</a> |
-  <a href="support.html">Support</a>
+  <a href="guides.html">Guides</a> |
+  <a href="about.html">About</a>
 </h2>
 
-<p>Under construction</p>
+<h3 class="disclaimer">These guides are not complete and based solely off of my own experience and playstyle. Your results may vary.</h3>
 
+<!-- GUIDE BUTTONS -->
+<div class="guide-list">
+  <button class="guide-btn" onclick="openGuide('raichu')">Mega Raichu-Y / Mega Mawile Midrange</button>
+  <button class="guide-btn" onclick="openGuide('rain')">Rain</button>
+</div>
 
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="handleOverlayClick(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeGuide()">✕</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<script>
+  const guides = {
+    raichu: {
+      title: "Mega Raichu-Y / Mega Mawile Midrange",
+      code: "Rental code: N0PL2K9L5N",
+      content: `
+        <h3 class="modal-section-header">Overview</h3>
+        <p>Pressure the early game with Mawile tanking hits before putting the opponent to sleep, and then clean up with your mega of choice. I typically go for two procs of Coil for a 98% accurate Hypnosis.</p>
+
+        <h3 class="modal-section-header">My Standard Leads</h3>
+        <p>Milotic + Incineroar: Coil mixed with Intimidate/Fake Out pressure Surprisingly strong into rain teams.</p>
+        <p>Milotic + Ceruldege: Coil/Protect with Bulk Up. Strong into Trick Room teams or other teams that look to also set up turn one.</p>
+
+        <h3 class="modal-section-header">Item Choices</h3>
+        <p>Sinistcha: Coba Berry allows it to eat most Pelipper's Hurricane, then it heals right back up with Life Dew or Matcha Gotcha.</p>
+        <p>Ceruledge: Colbur Berry can allow Ceruledge to tank a Sucker Punch or Kowtow Cleave from Kingambit.</p>
+
+        <h3 class="modal-section-header">Mega Usage</h3>
+        <p>This team is unique in that both megas are best used in strategic positions, as Mega Raichu Y is fairly squishy, even with the bulk investment, and Mega Mawile is slow. This team is all about getting them into favorable positions, as they both have the power to get quick KOs.</p>
+
+        <h3 class="modal-section-header">Matchups</h3>
+        <p>Rain: This matchup feels amazing if you can position well. If you lead Incineroar/Milotic, Milotic can get off a free Coil or two with Incineroar doing its thing. Sinistcha can tank Hurricane with its Coba Berry, and base Raichu's Lightning Rod can absorb an Electro Shot from Archaludon that was meant for Milotic. You just need to be careful to not sac Raichu before it can Mega Evolve and KO Archaludon and/or Mega Metagross with Focus Blast, and Sinistcha is necessary to take care of Swampert.</p>
+        <p>"Big 6": Honestly this is a skill matchup for the both of you. Ceruledge absorbs Heat Wave from opposing Charizard-Y, and Milotic can tank most of their physical threats but isn't great at taking Charizard-Y's Solar Beam. I tend to take Mega Raichu Y in the back, and go off vibes for the lead pokemon and fourth slot.</p>
+        <p>Trick Room: Perfect opportunity to lead Milotic + Ceruledge, with Sinistcha/Mawile in the back. Turn 1 is a free setup turn for both of your Pokemon.</p>
+        <p>Mega Staraptor: These guys are very predictable, so you can lead Incineroar + Milotic. The initial Intimidate proc on base Staraptor slows them down slightly, with Milotic also getting a Competitive boost from their Staraptor's Intimidate. Fake Out pressure gives you a free turn to Coil before you start unleashing accurate Hypnosis and playing redirection games with Sinistcha.</p>
+        <p>Perish Trap: Lead Milotic/Ceruledge, bring Sinistcha/Mega (choose based off their cleanup mons) in the back. If they lead with Gengar, swap in Sinistcha for Milotic IMMEDIATELY before it Mega Evolves to prevent the trap with both of your Ghost type Pokemon out. Play it slow, deny their traps and aim for quick KOs with your mega when you can. Don't get greedy and you should do well.</p>
+      `
+    },
+    rain: {
+      title: "Rain",
+      code: "Rental code: 9YQR4U2ABC",
+      content: `
+        <h3 class="modal-section-header">Overview</h3>
+        <p>tktk</p>
+
+        <h3 class="modal-section-header">My Standard Leads</h3>
+        <p>tktk</p>
+
+        <h3 class="modal-section-header">Support</h3>
+        <p>tktk</p>
+
+        <h3 class="modal-section-header">Mega Usage</h3>
+        <p>tktk</p>
+
+        <h3 class"modal-section-header">Matchups</h3>
+        <p>tktk</p>
+      `
+    }
+  };
+
+  function openGuide(key) {
+    const guide = guides[key];
+    document.getElementById('modal-content').innerHTML = `
+      <h2 class="modal-title">${guide.title}</h2>
+      <p class="modal-code">${guide.code}</p>
+      ${guide.content}
+    `;
+    document.getElementById('modal-overlay').classList.add('open');
+  }
+
+  function closeGuide() {
+    document.getElementById('modal-overlay').classList.remove('open');
+  }
+
+  function handleOverlayClick(e) {
+    if (e.target === document.getElementById('modal-overlay')) closeGuide();
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeGuide();
+  });
+</script>
 
 </body>
 </html>
