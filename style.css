@@ -26,13 +26,21 @@ body {
   text-align: center;
 }
 
+.links {
+  font-family: "DM Serif Display:";
+  font-size: 32;
+  color: var(--accent);
+  letter-spacing: 1px;
+  text-align: center;
+}
+
 .team-section {
   margin-bottom: 40px;
 }
 
 .team-name {
   font-family: "DM Serif Display";
-  font-size: 32px;
+  font-size: 26px;
   color: var(--accent);
   margin: 0 0 12px 4px;
 }

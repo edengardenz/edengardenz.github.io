@@ -211,6 +211,7 @@
       {
         "name": "metagross",
         "displayName": "Mega Metagross",
+        "form": "mega",
         "role": "wincon",
         "item": {
           "slug": "metagrossite",
