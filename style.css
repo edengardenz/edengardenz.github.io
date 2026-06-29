@@ -57,7 +57,7 @@ body {
   gap: 4px;
 }
 
-.mon-card img {
+.mon-card .pokemon-sprite {
   width: 132px;
   height: 132px;
   object-fit: contain;
@@ -83,8 +83,8 @@ body {
 }
 
 .item-icon {
-  width: 12px;
-  height: 12px;
+  width: 28px;
+  height: 28px;
 }
 
 .role {
