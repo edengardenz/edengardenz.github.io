@@ -3,8 +3,9 @@
     "name": "Mega Raichu-Y/Mega Mawile Midrange",
     "members": [
       {
-        "name": "raichu-mega-y",
+        "name": "raichu",
         "displayName": "Mega Raichu Y",
+        "form": "mega-y",
         "role": "wincon",
         "item": {
           "slug": "raichunite-y",
@@ -21,8 +22,9 @@
         ]
       },
       {
-        "name": "mawile-mega",
+        "name": "mawile",
         "displayName": "Mega Mawile",
+        "form": "mega",
         "role": "wincon",
         "item": {
           "slug": "mawilite",
@@ -41,6 +43,7 @@
       {
         "name": "sinistcha",
         "displayName": "Sinistcha",
+        "form": "unremarkable",
         "role": "support",
         "item": {
           "slug": "coba-berry",
