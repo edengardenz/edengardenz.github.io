@@ -200,6 +200,7 @@
         },
         "shiny": true,
         "ability": "Prankster",
+        "nature": "Careful",
         "moves": [
           "Foul Play",
           "Parting Shot",
@@ -216,6 +217,7 @@
           "display": "Metagrossite"
         },
         "shiny": true,
+        "nature": "Jolly",
         "ability": "Tough Claws",
         "moves": [
           "Iron Head",
