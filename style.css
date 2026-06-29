@@ -1,0 +1,118 @@
+:root {
+  --bg: #141430;          /* OBS background */
+  --panel: rgba(255, 255, 255, 0.06);
+  --panel-border: rgba(232, 191, 185, 0.25);
+
+  --text: #e8dfe0;
+  --muted: rgba(232, 191, 185, 0.7);
+
+  --accent: #e8bfb9;      /* your name color */
+  --accent2: #7c5cff;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: radial-gradient(circle at top, #1a1a3a, var(--bg));
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.logo {
+  font-family: "Bonheur Royale", cursive;
+  font-size: 48px;
+  color: var(--accent);
+  letter-spacing: 1px;
+}
+
+.card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(232,191,185,0.2);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.mon-card {
+  text-align: center;
+  padding: 8px;
+}
+
+.mon-card img {
+  width: 64px;
+  height: 64px;
+}
+
+.item-wrap {
+  margin-top: 6px;
+  font-size: 12px;
+}
+
+.item-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.role {
+  font-size: 12px;
+  opacity: 0.9;
+  letter-spacing: 0.3px;
+}
+
+/* =========================
+   ROLE COLORS
+========================= */
+
+.role-setter {
+    color: #63e6be;
+}
+
+.role-setup {
+    color: #ff922b;
+}
+
+.role-sweeper {
+  color: #ff6b6b;
+}
+
+.role-support {
+  color: #4dabf7;
+}
+
+.role-pivot {
+  color: #ffd43b;
+}
+
+.role-control {
+  color: #b197fc;
+}
+
+.role-utility {
+  color: #63e6be;
+}
+
+.role-wincon {
+  color: #ffa8a8;
+}
+
+.role-cleanup {
+    color: #ffa94d;
+}
+
+.role-phys-wall {
+  color: #74c0fc;
+}
+
+.role-special-wall {
+  color: #b197fc;
+}
+
+.role-unknown {
+  color: rgba(255, 255, 255, 0.6);
+}

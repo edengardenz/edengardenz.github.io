@@ -1,0 +1,43 @@
+[
+  {
+    "name": "Mega Raichu-Y/Mega Mawile Midrange",
+    "members": [
+      {
+        "name": "raichu-mega-y",
+        "role": "wincon",
+        "item": "raichunite-y",
+        "shiny": true
+      },
+      {
+        "name": "mawile-mega",
+        "role": "wincon",
+        "item": "mawilite",
+        "shiny": true
+      },
+      {
+        "name": "sinistcha",
+        "role": "support",
+        "item": "coba-berry",
+        "shiny": false
+      },
+      {
+        "name": "ceruledge",
+        "role": "setup",
+        "item": "colbur-berry",
+        "shiny": false
+      },
+      {
+        "name": "milotic",
+        "role": "utility",
+        "item": "leftovers",
+        "shiny": true
+      },
+      {
+        "name": "incineroar",
+        "role": "pivot",
+        "item": "sitrus-berry",
+        "shiny": true
+      }
+    ]
+  }
+]
