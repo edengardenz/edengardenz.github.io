@@ -225,9 +225,9 @@ async function renderAllTeams() {
 
     // Team name heading
     const nameHeading = document.createElement("h3");
-    nameHeadingeading.className = "team-name";
-    nameHeadingheading.textContent = team.name;
-    section.appendChild(heading);
+    nameHeading.className = "team-name";
+    nameHeading.textContent = team.name;
+    section.appendChild(nameHeading);
 
     // Rental code heading
     const codeHeading = document.createElement("h3");
