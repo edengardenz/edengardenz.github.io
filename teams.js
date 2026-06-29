@@ -163,10 +163,10 @@ async function renderAllTeams() {
   const teams = await res.json();
 
   for (const team of teams) {
-    const card = await renderTeam(team);
     console.log("renderAllTeams input:", team);
     console.log("typeof team:", typeof team);
     console.log("isArray:", Array.isArray(team));
+    const card = await renderTeam(team);
     container.appendChild(card);
   }
 }
