@@ -162,12 +162,11 @@ async function renderAllTeams() {
   const res = await fetch("teams.json");
   const teams = await res.json();
 
+  container.innerHTML = "";
+
   for (const team of teams) {
     console.log("renderAllTeams input:", team);
-    console.log("typeof team:", typeof team);
-    console.log("isArray:", Array.isArray(team));
-    const card = await renderTeam(team.members);
-    container.appendChild(card);
+    renderTeam(team.members);
   }
 }
 
