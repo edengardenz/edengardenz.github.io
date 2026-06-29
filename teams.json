@@ -1,6 +1,6 @@
 [
   {
-    "name": "Mega Raichu-Y/Mega Mawile Midrange",
+    "name": "Mega Raichu-Y / Mega Mawile Midrange",
     "members": [
       {
         "name": "raichu",
@@ -113,5 +113,115 @@
         ]
       }
     ]
+  },
+  {
+    "name": "Rain",
+    "members": [
+      {
+        "name": "pelipper",
+        "displayName": "Pelipper",
+        "role": "setter",
+        "item": {
+          "slug": "sitrus-berry",
+          "display": "Sitrus Berry"
+        },
+        "shiny": true,
+        "ability": "Drizzle",
+        "nature": "Modest",
+        "moves": [
+          "Hurricane",
+          "Weather Ball",
+          "Wide Guard",
+          "Tailwind"
+        ]
+      },
+      {
+        "name": "archaludon",
+        "displayName": "Archaludon",
+        "role": "sweeper",
+        "item": {
+          "slug": "leftovers",
+          "display": "Leftovers"
+        },
+        "shiny": true,
+        "ability": "Stamina",
+        "nature": "Modest",
+        "moves": [
+          "Electro Shot",
+          "Dragon Pulse",
+          "Flash Cannon",
+          "Protect"
+        ]
+      },
+      {
+        "name": "swampert",
+        "displayName": "Mega Swampert",
+        "form": "mega",
+        "role": "wincon",
+        "item": {
+          "slug": "swampertite",
+          "display": "Swampertite"
+        },
+        "shiny": false,
+        "ability": "Swift Swim",
+        "nature": "Adamant",
+        "moves": [
+          "Wave Crash",
+          "Earthquake",
+          "Ice Punch",
+          "Protect"
+        ]
+      },
+      {
+        "name": "sinistcha",
+        "displayName": "Sinistcha",
+        "role": "support",
+        "item": {
+          "slug": "coba-berry",
+          "display": "Coba Berry"
+        },
+        "shiny": false,
+        "ability": "Hospitality",
+        "nature": "Bold",
+        "moves": [
+          "Matcha Gotcha",
+          "Life Dew",
+          "Rage Powder",
+          "Protect"
+        ]
+      },
+      {
+        "name": "grimmsnarl",
+        "displayName": "Grimmsnarl",
+        "role": "setter",
+        "item": {
+          "slug": "light-clay",
+          "display": "Light Clay"
+        },
+        "ability": "Prankster",
+        "moves": [
+          "Foul Play",
+          "Parting Shot",
+          "Light Screen",
+          "Reflect"
+        ]
+      },
+      {
+        "name": "metagross",
+        "displayName": "Mega Metagross",
+        "role": "wincon",
+        "item": {
+          "slug": "metagrossite",
+          "display": "Metagrossite"
+        },
+        "ability": "Tough Claws",
+        "moves": [
+          "Iron Head",
+          "Psychic Fangs",
+          "Body Press",
+          "Protect"
+        ]
+      }
+  ]
   }
 ]
