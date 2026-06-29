@@ -196,7 +196,7 @@ async function renderMon(mon) {
 
 async function renderTeam(team) {
   const card = document.createElement("div");
-  card.className = "team-card";
+  card.className = "team-card team-grid";
 
   for (const mon of team) {
     const monEl = await renderMon(mon);
