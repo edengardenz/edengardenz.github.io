@@ -34,19 +34,26 @@ body {
 }
 
 .team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  display: flex;
+  flex-direction: row;
   gap: 12px;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  overflow-x: auto;
 }
 
 .mon-card {
   text-align: center;
   padding: 8px;
+  min-width: 110px;
 }
 
 .mon-card img {
-  width: 64px;
-  height: 64px;
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  image-rendering: auto;
 }
 
 .item-wrap {
