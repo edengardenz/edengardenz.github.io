@@ -23,6 +23,7 @@ body {
   font-size: 48px;
   color: var(--accent);
   letter-spacing: 1px;
+  text-align: center;
 }
 
 .team-section {
