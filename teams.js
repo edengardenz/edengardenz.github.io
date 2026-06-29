@@ -166,7 +166,7 @@ async function renderAllTeams() {
     console.log("renderAllTeams input:", team);
     console.log("typeof team:", typeof team);
     console.log("isArray:", Array.isArray(team));
-    const card = await renderTeam(team);
+    const card = await renderTeam(team.members);
     container.appendChild(card);
   }
 }

@@ -78,7 +78,10 @@
         "name": "milotic",
         "displayName": "Milotic",
         "role": "utility",
-        "item": "leftovers",
+        "item": {
+          "slug": "leftovers",
+          "display": "Leftovers"
+        },
         "shiny": true,
         "ability": "Competitive",
         "nature": "Calm",
