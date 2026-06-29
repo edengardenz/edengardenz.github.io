@@ -19,12 +19,6 @@ async function fetchJSON(url) {
   }
 }
 
-function getItemDebugBorder(source) {
-  if (source === "api") return "20px solid #51cf66";   // green
-  if (source === "local") return "20px solid #ffd43b"; // yellow
-  return "20px solid #ff6b6b";                         // red
-}
-
 // =========================
 // SPRITES (Pokémon)
 // =========================
@@ -50,16 +44,10 @@ async function getItemIcon(slug) {
   const data = await fetchJSON(POKEAPI_ITEM + slug);
 
   if (data && data.sprites && data.sprites.default) {
-    return {
-      src: data.sprites.default,
-      source: "api"
-    };
+    return data.sprites.default;
   }
 
-  return {
-    src: `assets/items/${slug}.png`,
-    source: "local"
-  };
+  return localItemIcon(slug);
 }
 
 // =========================
@@ -132,16 +120,9 @@ async function renderTeam(team) {
     const itemWrap = document.createElement("div");
     itemWrap.className = "item-wrap";
 
-    const itemData = await getItemIcon(mon.item);
-
     const itemImg = document.createElement("img");
     itemImg.className = "item-icon";
-    itemImg.src = itemData.src;
-
-    // DEBUG BORDER (temporary)
-    wrapper.style.border = getItemDebugBorder(itemData.source);
-    wrapper.style.borderRadius = "10px";
-    wrapper.style.padding = "6px";
+    itemImg.src = await getItemIcon(mon.item);
 
     const itemText = document.createElement("div");
     itemText.textContent = mon.item;
