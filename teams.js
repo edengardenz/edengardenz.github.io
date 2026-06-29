@@ -3,7 +3,6 @@
 // =========================
 
 const POKEAPI_POKEMON = "https://pokeapi.co/api/v2/pokemon/";
-const POKEAPI_ITEM = "https://pokeapi.co/api/v2/item/";
 
 // =========================
 // UTIL
@@ -165,6 +164,9 @@ async function renderAllTeams() {
 
   for (const team of teams) {
     const card = await renderTeam(team);
+    console.log("renderAllTeams input:", team);
+    console.log("typeof team:", typeof team);
+    console.log("isArray:", Array.isArray(team));
     container.appendChild(card);
   }
 }
