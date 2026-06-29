@@ -48,9 +48,10 @@
 
     .dog-gallery img:only-child,
     .dog-gallery img:nth-child(odd):last-child {
-      grid-column: 1 / -1;
-      height: 400px;
-      object-fit: cover;
+        grid-column: 1 / -1;
+        height: 400px;
+        object-fit: cover;
+        object-position: top;
     }
 
     .dog-divider {
@@ -58,6 +59,7 @@
       border: none;
       border-top: 1px solid rgba(232, 191, 185, 0.15);
     }
+}
   </style>
 </head>
 <body>
