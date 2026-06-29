@@ -2,11 +2,13 @@
 // CONFIG
 // =========================
 
-const POKEAPI_SPRITES =
-  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon";
+const POKEAPI = "https://pokeapi.co/api/v2/pokemon";
+
+const SPRITE_BASE =
+  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home";
 
 // =========================
-// STATE (DEX MAP)
+// STATE
 // =========================
 
 let dexMap = {};
@@ -28,66 +30,94 @@ async function loadDexCSV(path = "./assets/lists/dex.csv") {
 }
 
 // =========================
-// HELPERS
+// SPRITE
 // =========================
 
-function getPokemonId(name) {
-  return dexMap[name];
+function getSprite(id, shiny = false) {
+  if (!id) return "";
+
+  return shiny
+    ? `${SPRITE_BASE}/shiny/${id}.png`
+    : `${SPRITE_BASE}/${id}.png`;
 }
 
-function getForm(mon) {
-  return mon.form ?? "base";
-}
-
-function getShiny(mon) {
-  return mon.shiny ?? false;
-}
+// =========================
+// ROLE CLASS
+// =========================
 
 function roleClass(role) {
   return `role-${role || "unknown"}`;
 }
 
 // =========================
-// SPRITE RESOLVER (POKEAPI ONLY)
+// RESOLVER (CORE LOGIC)
 // =========================
 
-function getPokemonSprite(id, shiny = false) {
-  if (!id) return "";
+async function resolvePokemon(mon) {
+  const baseName = mon.name;
+  const form = mon.form ?? "base";
+  const shiny = mon.shiny ?? false;
 
-  return shiny
-    ? `${POKEAPI_SPRITES}/shiny/${id}.png`
-    : `${POKEAPI_SPRITES}/${id}.png`;
+  // =========================
+  // 1. FORM LOOKUP (MEGA / ALT FORMS)
+  // =========================
+  if (form !== "base") {
+    const slug = `${baseName}-${form}`;
+
+    try {
+      const res = await fetch(`${POKEAPI}/${slug}`);
+
+      if (res.ok) {
+        const data = await res.json();
+
+        return {
+          id: data.id,
+          sprite: getSprite(data.id, shiny)
+        };
+      }
+    } catch (e) {
+      console.warn("Form fetch failed:", slug);
+    }
+
+    console.warn("Falling back from form:", slug);
+  }
+
+  // =========================
+  // 2. BASE DEX LOOKUP
+  // =========================
+  const id = dexMap[baseName];
+
+  if (!id) {
+    console.warn("Missing dex entry:", baseName);
+
+    return {
+      id: null,
+      sprite: ""
+    };
+  }
+
+  return {
+    id,
+    sprite: getSprite(id, shiny)
+  };
 }
 
 // =========================
-// ITEM RENDERER
+// MON CARD
 // =========================
 
-function getItemIcon(slug) {
-  return `assets/items/${slug}.png`;
-}
-
-// =========================
-// TEAM CARD RENDER
-// =========================
-
-function renderMon(mon) {
+async function renderMon(mon) {
   const wrapper = document.createElement("div");
   wrapper.className = `mon-card ${roleClass(mon.role)}`;
 
   // -------------------------
   // SPRITE
   // -------------------------
-  const id = getPokemonId(mon.name);
-  const shiny = getShiny(mon);
+  const { sprite } = await resolvePokemon(mon);
 
   const img = document.createElement("img");
   img.className = "pokemon-sprite";
-  img.src = getPokemonSprite(id, shiny);
-
-  if (!id) {
-    console.warn("Missing dex entry:", mon.name);
-  }
+  img.src = sprite;
 
   wrapper.appendChild(img);
 
@@ -108,7 +138,7 @@ function renderMon(mon) {
 
     const itemImg = document.createElement("img");
     itemImg.className = "item-icon";
-    itemImg.src = getItemIcon(mon.item.slug);
+    itemImg.src = `assets/items/${mon.item.slug}.png`;
 
     const itemText = document.createElement("div");
     itemText.className = "item-name";
@@ -161,24 +191,23 @@ function renderMon(mon) {
 }
 
 // =========================
-// TEAM RENDER
+// TEAM
 // =========================
 
-function renderTeam(team) {
-  const container = document.getElementById("team-container");
-
+async function renderTeam(team) {
   const card = document.createElement("div");
   card.className = "team-card";
 
   for (const mon of team) {
-    card.appendChild(renderMon(mon));
+    const monEl = await renderMon(mon);
+    card.appendChild(monEl);
   }
 
   return card;
 }
 
 // =========================
-// MAIN LOOP
+// MAIN
 // =========================
 
 async function renderAllTeams() {
@@ -190,7 +219,7 @@ async function renderAllTeams() {
   container.innerHTML = "";
 
   for (const team of teams) {
-    const teamCard = renderTeam(team.members);
+    const teamCard = await renderTeam(team.members);
     container.appendChild(teamCard);
   }
 }
