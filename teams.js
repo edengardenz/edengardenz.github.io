@@ -20,9 +20,9 @@ async function fetchJSON(url) {
 }
 
 function getItemDebugBorder(source) {
-  if (source === "api") return "2px solid #51cf66";   // green
-  if (source === "local") return "2px solid #ffd43b"; // yellow
-  return "2px solid #ff6b6b";                         // red
+  if (source === "api") return "20px solid #51cf66";   // green
+  if (source === "local") return "20px solid #ffd43b"; // yellow
+  return "20px solid #ff6b6b";                         // red
 }
 
 // =========================
