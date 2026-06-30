@@ -232,7 +232,7 @@ async function renderAllTeams() {
     // Rental code heading
     const codeHeading = document.createElement("h3");
     codeHeading.className = "team-code";
-    codeHeading.textContent = team.code;
+    codeHeading.textContent = "Replica code: " + team.code;
     section.appendChild(codeHeading);
 
     // Cards row
